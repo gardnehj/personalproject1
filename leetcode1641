@@ -1,0 +1,24 @@
+class Solution:
+    def countVowelStrings(self, n: int) -> int:
+       
+        #this is ordered stats
+        #Chose or permutation
+        #we don't ever need to print 
+        
+       
+        count = n
+        w_old = [1,1,1,1,1]
+        w_new = [1,1,1,1,1]
+        
+        while count > 1:
+            for i in range(len(w_old)):
+                #This following for loop sums u-> a u -> e etc. for each interation
+                w_old_total = 0
+                for k in range(5-i):
+                    print('W_Old',w_old[4-k])
+                    w_old_total += w_old[4-k]
+                #print(w_old_total)
+                w_new[i] = w_old_total
+            w_old = w_new
+            count -= 1
+        return(sum(w_new))
